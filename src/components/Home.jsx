@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import useFetch from './useFetch';
+import {Link} from 'react-router-dom';
 
 function Home() {
   const [currentRegion, setCurrentRegion] = useState('All');
@@ -34,23 +35,25 @@ function Home() {
       ))}
       {countries.map((country) => (
         <div key={country.name.common}>
-          <h2>{country.name.common}</h2>
-          {country.region && country.region.length > 0 ? (
-            <p>Region: {country.region}</p>
-          ) : (
-            <p>Region: Not available</p>
-          )}
-          {country.subregion && country.subregion.length > 0 ? (
-            <p>Subregion: {country.subregion}</p>
-          ) : (
-            <p>Subregion: Not available</p>
-          )}
-          {country.capital && country.capital.length > 0 ? (
-            <p>Capital: {country.capital}</p>
-          ) : (
-            <p>Capital: Not available</p>
-          )}
-          <img src={country.flags.png} alt={country.name.common} width="200" />
+          <Link to={`/country/${country.alpha3Code}`}>
+            <h2>{country.name.common}</h2>
+            {country.region && country.region.length > 0 ? (
+              <p>Region: {country.region}</p>
+            ) : (
+              <p>Region: Not available</p>
+            )}
+            {country.subregion && country.subregion.length > 0 ? (
+              <p>Subregion: {country.subregion}</p>
+            ) : (
+              <p>Subregion: Not available</p>
+            )}
+            {country.capital && country.capital.length > 0 ? (
+              <p>Capital: {country.capital}</p>
+            ) : (
+              <p>Capital: Not available</p>
+            )}
+            <img src={country.flags.png} alt={country.name.common} width="200" />
+          </Link>
         </div>
       ))}
     </div>

@@ -4,6 +4,7 @@ import Home from './Home.js';
 import CurrencyQuiz from './CurrencyQuiz.js';
 import CapitalQuiz from './CapitalQuiz';
 import RegionQuiz from './RegionQuiz';
+import CountryAbout from './CountryAbout.jsx';
 
 const RoutesAll = () => {
   return (
@@ -14,6 +15,7 @@ const RoutesAll = () => {
         <Route path="/currency" element={<CurrencyQuiz />} />
         <Route path="/capital" element={<CapitalQuiz />} /> 
         <Route path="/region" element={<RegionQuiz />} /> 
+        <Route path="/country/:alpha" element={<CountryAbout />} /> 
       </Routes>
     </Router>
   );
