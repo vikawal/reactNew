@@ -1,11 +1,12 @@
 import useFetch from "./useFetch";
 import React from 'react';
+import './spinner.css';
 // import './home.css';
 
 function CurrencyQuiz() {
   const { data: countries, loading, error } = useFetch('https://restcountries.com/v3.1/all?fields=name,currencies,flags');
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) return <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
+  if (error) return <p className="error-message">{error}</p>;
   return (
     <div className="container">
       <h1 className="title">Quiz App</h1>

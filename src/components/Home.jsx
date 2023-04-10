@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import useFetch from './useFetch';
 import './home.css';
+import './spinner.css'
 import { Link } from 'react-router-dom';
 
 function Home() {
@@ -17,8 +18,8 @@ function Home() {
     setCurrentRegion(region);
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) return <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
+  if (error) return <p className="error-message">{error}</p>;
   console.log(countries);
 
   return (

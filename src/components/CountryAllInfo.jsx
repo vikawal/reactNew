@@ -11,7 +11,7 @@ function CountryAllInfo({ country }) {
           <p>Country name is not available</p>
         )
       ) : (
-        <p>Loading....Wait</p>
+        <p>Loading....</p>
       )
       }
       {/* {country && country.name && country.name.common && <h2>{country.name.common}</h2>} */}
