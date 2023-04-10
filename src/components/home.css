@@ -1,0 +1,225 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .title {
+    text-align: center;
+  }
+  
+  .subtitle {
+    text-align: center;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .button-group button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 15px;
+  }
+  
+  .button-group button:hover {
+      background-color: #3e8e41;
+  }
+  
+  .button-group button.active {
+      background-color: #333;
+  }
+  
+  .country-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-gap: 20px;
+  }
+  
+  .country-item {
+      border: 1px solid #ddd;
+      padding: 10px;
+  }
+
+  .country-item a {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+  
+  .country-item a:hover {
+    background-color: #3e8e41;
+  }
+
+  .country-item img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid black;
+    width: 200px;
+    height: 100px;
+    object-fit: contain;
+  }
+  
+  .country-name {
+      margin-top: 0;
+  }
+
+  /* Styles for small screens */
+@media (max-width: 600px) {
+    .button-group {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .button-group button {
+      margin: 8px 0;
+    }
+  }
+  
+/* body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333333;
+    background-color: #f2f2f2;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  h1,
+  h2 {
+    margin: 0;
+    font-weight: normal;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  button {
+    background-color: #3498db;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  button:hover {
+    background-color: #2980b9;
+  }
+  
+  button:active {
+    background-color: #1e6091;
+  }
+  
+  button.selected {
+    background-color: #27ae60;
+  }
+  
+  button.selected:hover {
+    background-color: #21935c;
+  }
+  
+  .country {
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .country img {
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .country h2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .country p {
+    margin: 0.5rem 0;
+  }
+  
+  .country p:first-child {
+    margin-top: 0;
+  }
+  
+  .country p:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* For medium screens (tablet) */
+  /* @media only screen and (max-width: 768px) {
+    .container {
+      padding: 1rem;
+    }
+  
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+  
+    button {
+      font-size: 0.9rem;
+      padding: 0.3rem 0.7rem;
+      margin: 0.3rem;
+    }
+  }
+   */
+  /* For small screens (mobile) */
+  /* @media only screen and (max-width: 480px) {
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    h2 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+  
+    button {
+      font-size: 0.8rem;
+      padding: 0.2rem 0.5rem;
+      margin: 0.2rem;
+    }
+  } */
+  
