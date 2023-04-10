@@ -5,14 +5,16 @@ import CountryAllInfo from "./CountryAllInfo";
 
 function CountryAbout () {
     const {alpha} = useParams();
-    const { data: country, loading, error } = useFetch(`https://restcountries.com/v3.1/alpha/${alpha}`);
+    const { data: country, loading, error } = useFetch(`https://restcountries.com/v3.1/alpha/${alpha}?fields=name,region,subregion,flags,capital,currencies,languages,borders,population,cca3`);
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
+    console.log(country);
+
     return (
         <div className="countryAbout">
             {loading && <p className="loading">Loading</p>}
             {error && <p className="error">{error}</p>}
-            {!loading && !error && <CountryAllInfo country={country} />} 
+            {!loading && !error && (<CountryAllInfo country={country} />)} 
 
         </div>
     );

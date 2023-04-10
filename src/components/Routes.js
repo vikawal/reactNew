@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Navbar from './NavBar.js';
-import Home from './Home.js';
-import CurrencyQuiz from './CurrencyQuiz.js';
+import Home from './Home';
+import CurrencyQuiz from './CurrencyQuiz';
 import CapitalQuiz from './CapitalQuiz';
 import RegionQuiz from './RegionQuiz';
 import CountryAbout from './CountryAbout.jsx';

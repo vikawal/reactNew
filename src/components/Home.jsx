@@ -6,8 +6,8 @@ function Home() {
   const [currentRegion, setCurrentRegion] = useState('All');
   const { data: countries, loading, error } = useFetch(
     currentRegion === 'All'
-      ? 'https://restcountries.com/v3.1/all?fields=name,region,subregion,flags,capital'
-      : `https://restcountries.com/v3.1/region/${currentRegion}?fields=name,region,subregion,flags,capital`
+      ? 'https://restcountries.com/v3.1/all?fields=name,region,subregion,flags,capital,cca3'
+      : `https://restcountries.com/v3.1/region/${currentRegion}?fields=name,region,subregion,flags,capital,cca3`
   );
 
   const regions = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
@@ -23,6 +23,8 @@ function Home() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
+  console.log(countries);
+
   return (
     <div>
       <h1>Quiz App. </h1>
@@ -35,7 +37,7 @@ function Home() {
       ))}
       {countries.map((country) => (
         <div key={country.name.common}>
-          <Link to={`/country/${country.alpha3Code}`}>
+          <Link to={`/country/${country.cca3}`}>
             <h2>{country.name.common}</h2>
             {country.region && country.region.length > 0 ? (
               <p>Region: {country.region}</p>
