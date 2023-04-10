@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import useFetch from './useFetch';
+import {Link} from 'react-router-dom';
 
 function Home() {
   const [currentRegion, setCurrentRegion] = useState('All');
   const { data: countries, loading, error } = useFetch(
     currentRegion === 'All'
-      ? 'https://restcountries.com/v3.1/all?fields=name,region,subregion,flags,capital'
-      : `https://restcountries.com/v3.1/region/${currentRegion}?fields=name,region,subregion,flags,capital`
+      ? 'https://restcountries.com/v3.1/all?fields=name,region,subregion,flags,capital,cca3'
+      : `https://restcountries.com/v3.1/region/${currentRegion}?fields=name,region,subregion,flags,capital,cca3`
   );
 
   const regions = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
@@ -22,6 +23,8 @@ function Home() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
+  console.log(countries);
+
   return (
     <div>
       <h1>Quiz App. </h1>
@@ -34,23 +37,25 @@ function Home() {
       ))}
       {countries.map((country) => (
         <div key={country.name.common}>
-          <h2>{country.name.common}</h2>
-          {country.region && country.region.length > 0 ? (
-            <p>Region: {country.region}</p>
-          ) : (
-            <p>Region: Not available</p>
-          )}
-          {country.subregion && country.subregion.length > 0 ? (
-            <p>Subregion: {country.subregion}</p>
-          ) : (
-            <p>Subregion: Not available</p>
-          )}
-          {country.capital && country.capital.length > 0 ? (
-            <p>Capital: {country.capital}</p>
-          ) : (
-            <p>Capital: Not available</p>
-          )}
-          <img src={country.flags.png} alt={country.name.common} width="200" />
+          <Link to={`/country/${country.cca3}`}>
+            <h2>{country.name.common}</h2>
+            {country.region && country.region.length > 0 ? (
+              <p>Region: {country.region}</p>
+            ) : (
+              <p>Region: Not available</p>
+            )}
+            {country.subregion && country.subregion.length > 0 ? (
+              <p>Subregion: {country.subregion}</p>
+            ) : (
+              <p>Subregion: Not available</p>
+            )}
+            {country.capital && country.capital.length > 0 ? (
+              <p>Capital: {country.capital}</p>
+            ) : (
+              <p>Capital: Not available</p>
+            )}
+            <img src={country.flags.png} alt={country.name.common} width="200" />
+          </Link>
         </div>
       ))}
     </div>
