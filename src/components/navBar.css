@@ -32,6 +32,7 @@ nav {
     nav ul {
       flex-direction: column;
       margin-top: 1rem;
+      align-items: center;
     }
   
     nav ul li {
@@ -43,11 +44,13 @@ nav {
   @media only screen and (max-width: 480px) {
     nav {
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
+      /* align-items: flex-start; */
     }
   
     nav ul {
       margin-top: 1rem;
+      align-items: center;
     }
   
     nav ul li {

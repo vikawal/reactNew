@@ -16,7 +16,7 @@ function CountryAllInfo({ country }) {
       }
       {/* {country && country.name && country.name.common && <h2>{country.name.common}</h2>} */}
       <p>Flag: {" "}
-        <img src={country.flags.svg} alt={country.name.common} width="200" /></p>
+        <img src={country.flags.svg} alt={country.name.common} width ="200"/></p>
       <p>Currency: 
         {Object.values(country.currencies).map((currency) => (
           <span key={currency.code}>

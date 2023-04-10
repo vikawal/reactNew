@@ -18,7 +18,7 @@ function RegionQuiz() {
           ) : (
             <p>Region: Not available</p>
           )}
-          <img src={country.flags.png} alt={country.name.common} width="200" />
+          <img src={country.flags.png} alt={country.name.common} />
         </div>
       ))}
     </div>
