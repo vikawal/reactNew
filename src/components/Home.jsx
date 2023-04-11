@@ -1,10 +1,31 @@
 import React, { useState } from 'react';
 import useFetch from './useFetch';
-import './home.css';
-import './spinner.css'
+import './styles/home.css';
+import './styles/spinner.css';
 import { Link } from 'react-router-dom';
+import { useFavorites } from "./FavCountryContext";
+import {ReactComponent as HeartFilled} from './assets/heart-solid.svg';
+import {ReactComponent as HeartEmpty} from './assets/heart-regular.svg';
 
 function Home() {
+
+  const {favorites, toggleFavorite, isFavorited} = useFavorites();
+
+  const handleFavoriteClick = (countryCode) => {
+    toggleFavorite(countryCode);
+
+  };
+  // const [favorites, setFavorites] = useFavorites();
+  // const isFavorited = favorites.includes(country.cca3);
+
+  // const handleFavoriteClick = () => {
+  //   if (isFavorited) {
+  //     setFavorites(favorites.filter((cca3) => cca3 !== country.cca3));
+  //   } else {
+  //     setFavorites([...favorites, country.cca3]);
+  //   }
+  // };
+
   const [currentRegion, setCurrentRegion] = useState('All');
   const { data: countries, loading, error } = useFetch(
     currentRegion === 'All'
@@ -21,6 +42,7 @@ function Home() {
   if (loading) return <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
   if (error) return <p className="error-message">{error}</p>;
   console.log(countries);
+
 
   return (
     <div className="container">
@@ -55,6 +77,10 @@ function Home() {
             )}
             <img src={country.flags.png} alt={country.name.common} className="country-flag" />
             </Link>
+            <button style={{ border: "none", background: "none" }} 
+                    onClick={() => handleFavoriteClick(country.cca3)}>
+                    {isFavorited(country.cca3) ? <HeartFilled width="24" height="24" /> : <HeartEmpty width="24" height="24" />}
+       </button>
           </div>
         ))}
       </div>

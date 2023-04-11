@@ -1,7 +1,7 @@
 import useFetch from "./useFetch";
 import React from 'react';
-import './spinner.css';
-// import './home.css';
+import './styles/spinner.css';
+// import './styles/home.css';
 
 function CurrencyQuiz() {
   const { data: countries, loading, error } = useFetch('https://restcountries.com/v3.1/all?fields=name,currencies,flags');

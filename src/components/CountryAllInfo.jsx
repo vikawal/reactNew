@@ -1,7 +1,17 @@
 import React from "react";
+import { useFavorites } from "./FavCountryContext";
+import {ReactComponent as HeartFilled} from './assets/heart-solid.svg';
+import {ReactComponent as HeartEmpty} from './assets/heart-regular.svg';
+// import {useFavoritesHook} from './useHooks/useFavoritesHook';
 
 function CountryAllInfo({ country }) {
-  console.log(country);
+  const {favorites, toggleFavorite, isFavorited} = useFavorites();
+
+  const handleFavoriteClick = () => {
+    toggleFavorite(country.cca3);
+
+  };
+  // console.log(country);
   return (
     <div>
       {country? (
@@ -33,6 +43,11 @@ function CountryAllInfo({ country }) {
       <p>Subregion: {country.subregion}</p>
       <p>Borders: {country.borders.join(", ")}</p>
       <p>Population: {country.population}</p>
+      <div>
+      <button style={{ border: "none", background: "none" }} onClick={handleFavoriteClick}>
+        {isFavorited(country.cca3) ? <HeartFilled width="24" height="24" /> : <HeartEmpty width="24" height="24"  />}
+       </button>
+      </div>
     </div>
   );
 }

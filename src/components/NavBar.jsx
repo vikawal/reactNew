@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import "./navBar.css";
+import './styles/navBar.css';
 
 
 function Navbar() {
@@ -17,6 +17,9 @@ function Navbar() {
         </li>
         <li>
           <Link to="/region">Country-Region Quiz</Link>
+        </li>
+        <li>
+          <Link to="/favorites">Favorite countries</Link>
         </li>
       </ul>
     </nav>

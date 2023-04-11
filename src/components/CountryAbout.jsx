@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "./useFetch";
 import CountryAllInfo from "./CountryAllInfo";
-import './spinner.css'
+import './styles/spinner.css';
 
 function CountryAbout () {
     const {alpha} = useParams();
