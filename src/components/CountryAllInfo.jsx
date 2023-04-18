@@ -24,15 +24,14 @@ function CountryAllInfo({ country }) {
         <p>Loading....</p>
       )
       }
-      {/* {country && country.name && country.name.common && <h2>{country.name.common}</h2>} */}
       <p>Flag: {" "}
         <img src={country.flags.svg} alt={country.name.common} width ="200"/></p>
-      <p>Currency: 
-        {Object.values(country.currencies).map((currency) => (
-          <span key={currency.code}>
+          <p>Currency: 
+      {Object.entries(country.currencies).map(([code, currency]) => (
+          <span key={code}>
             {currency.name} ({currency.symbol})
           </span>
-        ))} </p>
+      ))} </p>
       {country.capital && country.capital.length > 0 ? (
         <p>Capital: {country.capital[0]}</p>
       ) : (

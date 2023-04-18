@@ -3,16 +3,20 @@ import useFetch from './useFetch';
 import './styles/home.css';
 import './styles/spinner.css';
 import { Link } from 'react-router-dom';
-import { useFavorites } from "./FavCountryContext";
+// import { useFavorites } from "./FavCountryContext";
+import { FavCountryContext} from './FavCountryContext.jsx';
+import { useContext } from 'react';
 import {ReactComponent as HeartFilled} from './assets/heart-solid.svg';
 import {ReactComponent as HeartEmpty} from './assets/heart-regular.svg';
 
 function Home() {
 
-  const {favorites, toggleFavorite, isFavorited} = useFavorites();
+  const {favorites, toggleFavorite, isFavorited} = useContext(FavCountryContext);
+
+
 
   const handleFavoriteClick = (countryCode) => {
-    toggleFavorite(countryCode);
+    toggleFavorite(countryCode); 
 
   };
   // const [favorites, setFavorites] = useFavorites();
@@ -78,7 +82,7 @@ function Home() {
             <img src={country.flags.png} alt={country.name.common} className="country-flag" />
             </Link>
             <button style={{ border: "none", background: "none" }} 
-                    onClick={() => handleFavoriteClick(country.cca3)}>
+                    onClick={() => handleFavoriteClick(country.cca3,country.name.common, country.flags.png)}>
                     {isFavorited(country.cca3) ? <HeartFilled width="24" height="24" /> : <HeartEmpty width="24" height="24" />}
        </button>
           </div>

@@ -5,12 +5,12 @@ import CurrencyQuiz from './CurrencyQuiz';
 import CapitalQuiz from './CapitalQuiz';
 import RegionQuiz from './RegionQuiz';
 import CountryAbout from './CountryAbout.jsx';
-import { FavoritesProvider } from './FavCountryContext.jsx';
+import {FavCountryProvider} from './FavCountryContext.jsx';
 import Favorites from './FavoritesPage.jsx';
 
 const RoutesAll = () => {
   return (
-    <FavoritesProvider>
+    <FavCountryProvider>
      <Router>
        <Navbar />
       <Routes>
@@ -19,10 +19,11 @@ const RoutesAll = () => {
         <Route path="/capital" element={<CapitalQuiz />} /> 
         <Route path="/region" element={<RegionQuiz />} /> 
         <Route path="/country/:alpha" element={<CountryAbout />} /> 
-        <Route path="/favorites" element={<Favorites/>} />
+        <Route path="/favorites" element={<Favorites />} />
+        {/* <Route path="/favorites" element={<Favorites/>} /> */}
       </Routes>
      </Router>
-     </FavoritesProvider>
+     </FavCountryProvider>
   );
 }
 

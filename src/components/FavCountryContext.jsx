@@ -1,43 +1,58 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from 'react';
 
-export const FavoritesContext = createContext([]);
+export const FavCountryContext = createContext();
 
-export const useFavorites = () => useContext(FavoritesContext);
-
-export const FavoritesProvider = ({ children }) => {
+export function FavCountryProvider({ children }) {
   const [favorites, setFavorites] = useState([]);
 
-  const toggleFavorite = (cca3) => {
-    if (favorites.includes(cca3)) {
-      setFavorites(favorites.filter((item) => item !== cca3));
+  function toggleFavorite(countryCode) {
+    if (favorites.includes(countryCode)) {
+      setFavorites(favorites.filter((cca3) => cca3 !== countryCode));
     } else {
-      setFavorites([...favorites, cca3]);
+      setFavorites([...favorites, countryCode]);
     }
-  };
+  }
 
-  const isFavorited = (cca3) => {
-    return favorites.includes(cca3);
-  };
+  function isFavorited(countryCode) {
+    return favorites.includes(countryCode);
+  }
 
   return (
-    <FavoritesContext.Provider value={{ favorites, toggleFavorite, isFavorited }}>
+    <FavCountryContext.Provider value={{ favorites, toggleFavorite, isFavorited }}>
       {children}
-    </FavoritesContext.Provider>
+    </FavCountryContext.Provider>
   );
-};
+}
 
+export function useFavorites() {
+  return useContext(FavCountryContext);
+}
+
+// export default FavCountryProvider;
 // import { createContext, useContext, useState } from "react";
 
-// export const FavoritesContext =  createContext([]);
+// export const FavoritesContext = createContext([]);
 
 // export const useFavorites = () => useContext(FavoritesContext);
 
-// export const FavoritesProvider = ({children}) => {
-//     const [favorites, setFavorites] = useState([]);
+// export const FavoritesProvider = ({ children }) => {
+//   const [favorites, setFavorites] = useState([]);
 
-//     return (
-//         <FavoritesContext.Provider value={[favorites, setFavorites]}>
-//             {children}
-//         </FavoritesContext.Provider>
-//     );
+//   const toggleFavorite = (cca3) => {
+//     if (favorites.includes(cca3)) {
+//       setFavorites(favorites.filter((item) => item !== cca3));
+//     } else {
+//       setFavorites([...favorites, cca3]);
+//     }
+//   };
+
+//   const isFavorited = (cca3) => {
+//     return favorites.includes(cca3);
+//   };
+
+//   return (
+//     <FavoritesContext.Provider value={{ favorites, toggleFavorite, isFavorited }}>
+//       {children}
+//     </FavoritesContext.Provider>
+//   );
 // };
