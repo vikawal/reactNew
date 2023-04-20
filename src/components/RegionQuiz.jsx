@@ -1,11 +1,14 @@
-import useFetch from "./useFetch";
 import React, { useState } from 'react';
 import './styles/spinner.css';
+import './styles/quiz.css';
+import useShuffleFetch from './useShuffleFetch';
 
 const regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
 function RegionQuiz() {
-  const { data: countries, loading, error } = useFetch('https://restcountries.com/v3.1/all?fields=name,region,flags');
+  const { data: countries, loading, error, refetch } = useShuffleFetch(
+    "https://restcountries.com/v3.1/all?fields=name,region,flags"
+  );
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
@@ -27,46 +30,78 @@ function RegionQuiz() {
   setCurrentQuestion(currentQuestion + 1);
 }
 
-  function resetGame () {
+  function resetGame() {
     setGameStarted(false);
     setCurrentQuestion(0);
     setScore(0);
+    refetch(); // Refetch the data to shuffle the array
   }
 
   function renderQuestion() {
+    if (loading || error) {
+      return null; // don't render anything while loading or if there's an error
+    }
+  
     const questionCountry = countries[currentQuestion];
     const correctAnswer = questionCountry.region;
-    const allAnswers = regions.sort(() => Math.random() - 0.5);
+    const allAnswers = regions.filter(region => region !== correctAnswer);
+    const shuffledAnswers = shuffle([...allAnswers, correctAnswer]);
   
     return (
-      <div>
-        <h2>Question {currentQuestion + 1}</h2>
-        <h3>In which region is {questionCountry.name.common} located?</h3>
-        {allAnswers.map((answer) => (
-          answer !== correctAnswer && <button key={answer} onClick={() => handleAnswer(answer)}>{answer}</button>
+      <div className="container">
+        <h2 className="subtitle">Question {currentQuestion + 1}</h2>
+        <h3 className="subtitle">In which region is {questionCountry.name.common} located?</h3>
+        {shuffledAnswers.map((answer, index) => (
+          <div className="button-group" key={index} > 
+            <button key={answer} onClick={() => handleAnswer(answer)}>{answer}</button>
+          </div>
         ))}
-        <button key={correctAnswer} onClick={() => handleAnswer(correctAnswer)}>{correctAnswer}</button>
       </div>
     );
+  }
+  
+  function shuffle(array) {
+    // Fisher-Yates shuffle algorithm
+    let currentIndex = array.length;
+    let temporaryValue, randomIndex;
+  
+    // While there remain elements to shuffle
+    while (currentIndex !== 0) {
+  
+      // Pick a remaining element
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+  
+    return array;
   }
 
   function renderScore () {
     return (
-      <div>
-        <h2>Your score: {score} out of {currentQuestion}</h2>
-        <button onClick={resetGame}>Play Again</button>
-        <button onClick={() => window.location.href='/'}>Return to HomePage</button>
+      <div className="container">
+        <h2 className="subtitle">Your score: {score} out of {currentQuestion}</h2>
+        <div className="button-group">
+          <button onClick={resetGame}>Play Again</button>
+          <button onClick={() => window.location.href='/'}>Return to HomePage</button>
+        </div>
       </div>
     );
   }
 
   return (
-    <div>
-      <h1>Quiz App</h1>
-      <h2>Guess the region of a country</h2>
-      {!gameStarted && <button onClick={startGame}> Start Game</button>}
-      {gameStarted && currentQuestion < 10 && renderQuestion()}
-      {gameStarted && currentQuestion >= 10 && renderScore()}
+    <div className="container">
+      <h1 className="title">Quiz App</h1>
+      <h2 className="subtitle">Guess the region of a country</h2>
+      <div className="button-group">
+        {!gameStarted && <button onClick={startGame}> Start Game</button>}
+        {gameStarted && currentQuestion < 10 && renderQuestion()}
+        {gameStarted && currentQuestion >= 10 && renderScore()}
+      </div>
     </div>
   );
 }
