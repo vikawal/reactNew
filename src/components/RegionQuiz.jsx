@@ -34,12 +34,12 @@ function RegionQuiz() {
     setGameStarted(false);
     setCurrentQuestion(0);
     setScore(0);
-    refetch(); // Refetch the data to shuffle the array
+    refetch(); 
   }
 
   function renderQuestion() {
     if (loading || error) {
-      return null; // don't render anything while loading or if there's an error
+      return null; 
     }
   
     const questionCountry = countries[currentQuestion];
@@ -51,6 +51,7 @@ function RegionQuiz() {
       <div className="container">
         <h2 className="subtitle">Question {currentQuestion + 1}</h2>
         <h3 className="subtitle">In which region is {questionCountry.name.common} located?</h3>
+        <img className='flag' src={questionCountry.flags.png} alt={questionCountry.name.common} />
         {shuffledAnswers.map((answer, index) => (
           <div className="button-group" key={index} > 
             <button key={answer} onClick={() => handleAnswer(answer)}>{answer}</button>
@@ -61,18 +62,18 @@ function RegionQuiz() {
   }
   
   function shuffle(array) {
-    // Fisher-Yates shuffle algorithm
+    
     let currentIndex = array.length;
     let temporaryValue, randomIndex;
   
-    // While there remain elements to shuffle
+    
     while (currentIndex !== 0) {
   
-      // Pick a remaining element
+      
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
   
-      // And swap it with the current element
+      
       temporaryValue = array[currentIndex];
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;

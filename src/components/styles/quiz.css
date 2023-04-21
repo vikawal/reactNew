@@ -50,6 +50,23 @@
       margin: 8px 0;
     }
   }
+
+  .flag {
+    padding-top: 20px;
+    margin-bottom: 10px;
+    width: 250px;
+    height: 150px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .flag:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid #888;
+  }
   
 
   
