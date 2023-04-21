@@ -1,0 +1,152 @@
+/* 
+.country-info-container {
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.country-info-container h2 {
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+.country-info-container p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.country-info-container img {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+
+.favButton {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favoriteIcon {
+  fill: #e74c3c;
+  margin-right: 5px;
+  transition: fill 0.2s ease-in-out;
+}
+
+.favButton:hover svg {
+  fill: #c0392b;
+} */
+
+.country-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  background-color: #f8f8f8;
+}
+
+.name {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #444;
+}
+
+.flag {
+  padding-top: 20px;
+  margin-bottom: 10px;
+  width: 250px;
+  height: 150px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.flag:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border: 1px solid #888;
+}
+
+.currency {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #666;
+}
+
+.capital {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #666;
+}
+
+.language {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #666;
+}
+
+.region {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #666;
+}
+
+.subregion {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #666;
+}
+
+.borders {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #666;
+}
+
+.population {
+  font-size: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #666;
+}
+
+.favButton {
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.favoriteIcon {
+  width: 30px;
+  height: 30px;
+  fill: #f44336;
+  transition: all 0.2s ease-in-out;
+}
+
+.favoriteIcon:hover {
+  transform: scale(1.2);
+  fill: #c62828;
+}
