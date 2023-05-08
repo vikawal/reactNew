@@ -3,6 +3,7 @@ import './styles/spinner.css';
 import './styles/quiz.css';
 import useShuffleFetch from './useShuffleFetch';
 
+
 function CapitalQuiz() {
   const { data: countries, loading, error, refetch } = useShuffleFetch(
     "https://restcountries.com/v3.1/all?fields=name,capital,flags"
